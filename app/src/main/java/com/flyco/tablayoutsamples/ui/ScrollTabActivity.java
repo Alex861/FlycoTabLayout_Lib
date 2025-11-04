@@ -58,6 +58,12 @@ public class ScrollTabActivity extends AppCompatActivity implements OnTabSelectL
 
         tabLayout_1.showMsg(5, 5);
         tabLayout_1.setMsgMargin(5, 0, 10);
+        tabLayout_1.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                tabLayout_1.setCurrentTab(6);
+            }
+        }, 500);
     }
 
     @Override

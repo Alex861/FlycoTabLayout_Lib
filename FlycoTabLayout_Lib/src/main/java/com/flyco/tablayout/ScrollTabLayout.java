@@ -374,7 +374,20 @@ public class ScrollTabLayout extends HorizontalScrollView {
 
     //setter and getter
     public void setCurrentTab(int currentTab) {
-        this.mCurrentTab = currentTab;
+        if (currentTab != -1) {
+            if (mCurrentTab != currentTab) {
+                updateTabSelection(currentTab);
+                mCurrentTab = currentTab;
+                scrollToCurrentTab();
+                if (mListener != null) {
+                    mListener.onTabSelect(currentTab);
+                }
+            } else {
+                if (mListener != null) {
+                    mListener.onTabReselect(currentTab);
+                }
+            }
+        }
     }
 
     public float getTabPadding() {
