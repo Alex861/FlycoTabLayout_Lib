@@ -261,16 +261,21 @@ public class ScrollTabLayout extends HorizontalScrollView {
             public void onClick(View v) {
                 int position = mTabsContainer.indexOfChild(v);
                 if (position != -1) {
-                    updateTabSelection(position);
-                    mCurrentTab = position;
-                    scrollToCurrentTab();
-                    if (mListener != null) {
-                        mListener.onTabSelect(position);
+                    if (mCurrentTab != position) {
+                        updateTabSelection(position);
+                        mCurrentTab = position;
+                        scrollToCurrentTab();
+                        if (mListener != null) {
+                            mListener.onTabSelect(position);
+                        }
+                    } else {
+
+                        if (mListener != null) {
+                            mListener.onTabReselect(position);
+                        }
                     }
-                } else {
-                    if (mListener != null) {
-                        mListener.onTabReselect(position);
-                    }
+
+
                 }
             }
         });
