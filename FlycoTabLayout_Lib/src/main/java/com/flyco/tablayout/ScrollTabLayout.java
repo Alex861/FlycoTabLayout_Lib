@@ -269,13 +269,10 @@ public class ScrollTabLayout extends HorizontalScrollView {
                             mListener.onTabSelect(position);
                         }
                     } else {
-
                         if (mListener != null) {
                             mListener.onTabReselect(position);
                         }
                     }
-
-
                 }
             }
         });
